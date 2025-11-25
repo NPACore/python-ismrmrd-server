@@ -8,3 +8,7 @@
 data/
 .venv/
 uv.lock
+*egg-info/
+# make sentinel files
+.test
+.format

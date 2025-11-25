@@ -10,3 +10,20 @@ dependencies = [
     "numpy>=2.3.4",
     "pydicom>=3.0.1",
 ]
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+]
+[tool.setuptools.packages.find]
+# Include all packages found under "src"
+include = ["*py"]
+# Exclude tests and docs directories
+exclude = ["docker", "*sh", "tests/"]
+
+[pytest]
+tmp_path_retention_count = 1
+
+[tool.pytest.ini_options]
+norecursedirs = "tests/helpers"
