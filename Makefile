@@ -14,7 +14,7 @@ PYTHON_FILES=$(wildcard *.py tests/*py tests/helpers/*.py)
 	$(PYTHON) -m pytest tests | tee $@
 
 # don't format all. Would be a big git revision
-.format: $(wildcard test/*py tests/*.py tests/helpers/*.py) #$(PYTHON_FILES)
+.format: $(wildcard test/*py mrd2nii.py tests/*.py tests/helpers/*.py) #$(PYTHON_FILES)
 	isort $? | tee $@
 	black $? | tee -a $@
 
