@@ -11,7 +11,7 @@ MAX = 4095  # 12-bit data
 
 
 def checkers(nz, ny, nx):
-    checker_data = np.zeros((nz,ny, nx), dtype=np.uint16)
+    checker_data = np.zeros((nz, ny, nx), dtype=np.uint16)
     for z in range(nz):
         for y in range(ny):
             for x in range(nx):
@@ -33,7 +33,7 @@ def write_example(data, outdir, series_number=1):
 
     ds = pydicom.dcmread(pydicom.data.get_testdata_file("MR_small.dcm"))
 
-    #ds.PixelData = checkers(ds.NumberOfFrames,ds.Columns,ds.Rows).tobytes()
+    # ds.PixelData = checkers(ds.NumberOfFrames,ds.Columns,ds.Rows).tobytes()
     ds.PixelData = data.tobytes()
     (ds.NumberOfFrames, ds.Columns, ds.Rows) = data.shape
     ds.SeriesDescription = "Test Checkerboard"
@@ -53,7 +53,7 @@ def write_example(data, outdir, series_number=1):
     )
     dicom2mrd.main(args)
 
-    return {'mrd': mrd_h5, 'dcmdir': temp_dicom_dir}
+    return {"mrd": mrd_h5, "dcmdir": temp_dicom_dir}
 
 
 def mrd_data(filename, group="dataset"):
